@@ -1,0 +1,23 @@
+--------CURSOR COMMANDS--------
+
+when you want to fetch everything in the database:
+    result = cursor.fetchall()
+    returns everything in a list in [{}] brackets
+            
+when you want to only fetch one result: 
+    result = cursor.fetchone() 
+    returns one list in {} brackets
+
+when you want to save everything you have done to the databse (delete/insert):
+    connection.commit()
+
+-------------------------------
+
+----------CLEANLINESS----------
+
+you can use """ xxx """ to be ble to split a command 
+over multiple 
+lines, like
+this
+
+-------------------------------

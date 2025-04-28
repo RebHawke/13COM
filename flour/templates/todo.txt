@@ -1,0 +1,4 @@
+
+add photo for recipes (later)
+add serving sizes
+add macro calculator? (advanced)

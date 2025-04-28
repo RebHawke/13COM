@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Practice Exercises</title>
+    <link rel="stylesheet" href="/static/stylesheet.css">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Flask Practice Exercises - Page 1</h1>
+        <p>You will need to have 6 pages, and navigation that allows me to click between them.</p>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/page1">Page 1</a></li>
+            <li><a href="/name">Page 2</a></li>
+            <li><a href="/temp">Page 3</a></li>
+            <li><a href="/game">Game</a></li>
+            <!-- Add more links as needed -->
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h2>Page 1</h2>
+                    <p>Page 1 does one thing only - it displays a count of how many times in this session you have visited the page.</p>
+                    <p>This is just an exercise in using a session variable.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h2>Page 2</h2>
+                    <p>This page has a form in which the user enters their name. You then need to display a sentence that includes their name.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h2>Page 3</h2>
+                    <p>The user enters a temperature in Celsius. The equivalent temperature in Fahrenheit is displayed.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h2>Page 4</h2>
+                    <p>This page conversts either Celsius -> Fahrenheit or vice versa, depending on a s radio button selection made by the user</p>
+
+                        <form id="temperatureForm" method="post" action="/">
+                            <input type="radio" id="celsiusRadio" name="tempunit" value="celsius" checked>
+                            <label for="celsiusRadio">Celsius</label>
+                    
+                            <input type="radio" id="fahrenheitRadio" name="tempunit" value="fahrenheit">
+                            <label for="fahrenheitRadio">Fahrenheit</label>
+                    
+                            <br><br>
+                    
+                            <label for="temperatureInput">Enter Temperature:</label>
+                            <input type="text" id="temperatureInput" name="tempinput">
+                    
+                            <input type="submit" value="Convert">
+                        </form>
+                        {% if temp %}
+                        <h2>{{result}}</h2>
+                        {% endif %}
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h2>Page 5</h2>
+                    <p>Make the computer play this game and always win.</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dUXW3Kh_kxo?si=2sKC4BjUlFj3720V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h2>Page 6</h2>
+                    <p>This page will be a quiz. Start with questions in a data structure like this:</p>
+                    <p>quiz_questions = [
+                        ["Where is Paris?", "France", "USA", "NZ", "Russia"],
+                        ["Where is London?", "UK", "USA", "Russia", "Bolivia"]
+                        ["Which is the odd one out?","Puffer fish", "Horse", "Goat", "Rat", "Dog"]
+                        ]</p>
+                    <p>Display a random question each time. (How will you keep track of which is the current question?)</p>
+                    <p>The first answer will always be the correct one. You need to shuffle the answers when they're displayed, or it will be too easy</p>
+                    <p>Tell the user whether they got it right or wrong. (The route will need to know which one they sleected - how will you do this?)</p>
+                    <p>Also keep score</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<div class="headers">
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+</div>
+    
+{% for recipe in recipes %}
+    <tr>
+        <td>{{ recipe["id"] }}</td>
+        <td>{{ recipe["name"] }} </td>
+        <td><a href="/add/ingredient-{{ recipe['id'] }}">Add Ingredients </td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

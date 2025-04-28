@@ -1,0 +1,129 @@
+/* Make the body and html fill the whole viewport */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.endfooter {
+    background-color: #868686;
+}
+
+/* Main container where the video is */
+.main {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+/* Style for the video */
+#myVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the screen */
+    z-index: -1; /* Send video behind content */
+}
+
+/* Style for the text */
+.writing {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(5%, -50%);
+    color: white; /* Make text visible on top of video */
+    z-index: 1;
+    text-align: left;
+    font-size: 25%;
+}
+
+.writing h1 {
+    margin-left: 10px;
+    padding: 0px;
+}
+
+/* Style for the footer */
+.bottom {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 20px;
+}
+.f1, .f2 {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    line-height:35px;
+    
+}
+/* .f1 {
+    font-family: [enter first font family here];
+} */
+  
+.f2 {
+    /* font-family: [enter second font family here]; */
+    font-style: italic;
+}
+
+
+/* Set a specific height for the navbar to leave space for the logo ribbon */
+.navbar {
+    position: relative;
+    z-index: 10;
+}
+
+/* V-ribbon shape styling */
+.v-ribbon {
+    position: absolute;
+    left: 10px; /* Move it a bit to the left */
+    top: 0px; /* Adjust it so the ribbon is slightly above the navbar */
+    width: 100px; /* Control the width of the ribbon */
+    height: 100px; /* Adjust height to the size of the logo */
+    background-color: #69696963; 
+    clip-path: polygon(10% 0%, 90% 0%, 90% 80%, 50% 60%, 10% 80%); /* mkaes the ribbon shape */
+    z-index: 5;
+}
+
+/* Adjust the logo inside the ribbon */
+.v-ribbon .logo {
+    width: 80px; /* Logo width */
+    height: auto;
+    position: relative;
+    top: -7px;
+    left: 10px;
+}
+
+/* Cursor */
+.cursor {
+    position: relative;
+    width: 24em;
+    margin: 20px auto 0; /* Added top margin for spacing */
+    border-right: 2px solid rgba(255,255,255,.75);
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+/* Animation */
+.typewriter-animation {
+  animation: 
+    typewriter 2s steps(40, end) 0s 1 normal both, /* Fast typewriter animation with fewer steps */
+    blinkingCursor 500ms steps(1) infinite normal; /* Smooth blinking cursor */
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkingCursor {
+  from { border-right-color: rgba(255,255,255,.75); }
+  to { border-right-color: transparent; }
+}

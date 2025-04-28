@@ -1,0 +1,67 @@
+th {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid rgb(255, 0, 191);
+    background-color: rgb(255, 119, 210);
+
+    position: sticky;
+    top: 0;
+    left: 0;
+
+}
+
+table {
+    border-collapse: collapse;
+}
+
+body {
+    background-color: rgb(255, 205, 238);
+}
+
+td {
+    border: 1px solid rgb(255, 0, 191)
+}
+
+tr:nth-child(2n) {  /* every second row */
+    background-color: rgb(250, 176, 225) ;
+}
+
+
+th:first-child, td:first-child { 
+    position: sticky ;
+    left: 0;
+}
+
+td img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+td:has(img) {
+    background-color: white;
+}
+
+
+.type-normal { background-color: hsl(from #aa9 h s 70%); }
+.type-fire { background-color: hsl(from #f42 h s 70%); }
+.type-water { background-color: hsl(from #39f h s 70%); }
+.type-electric { background-color: hsl(from #fc3 h s 70%); }
+.type-grass { background-color: hsl(from #7c5 h s 70%); }
+.type-ice { background-color: hsl(from #6cf h s 70%); }
+.type-fighting { background-color: hsl(from #b54 h s 70%); }
+.type-poison { background-color: hsl(from #a59 h s 70%); }
+.type-ground { background-color: hsl(from #db5 h s 70%); }
+.type-flying { background-color: hsl(from #89f h s 70%); }
+.type-psychic { background-color: hsl(from #f59 h s 70%); }
+.type-bug { background-color: hsl(from #ab2 h s 70%); }
+.type-rock { background-color: hsl(from #ba6 h s 70%); }
+.type-ghost { background-color: hsl(from #66b h s 70%); }
+.type-dragon { background-color: hsl(from #76e h s 70%); }
+.type-dark { background-color: hsl(from #754 h s 70%); }
+.type-steel { background-color: hsl(from #aab h s 70%); }
+.type-fairy { background-color: hsl(from #e9e h s 70%); }
+
+/* h = hue s = saturation, 70% is the rate so makes it pale */

@@ -1,0 +1,32 @@
+.message {
+    background-color: rgb(204, 0, 0);
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px black;
+    /* transition-duration: 1s; */
+    animation-name: fade-out;
+    animation-duration: 1s;
+    animation-delay: 4s;
+    animation-fill-mode: both; /*finishes the animation on alst action*/
+}
+
+.messages {
+    position: fixed;
+    max-width: 600px;
+    bottom: 0;
+    right: 10px;
+}
+
+/* .message:hover {
+    opacity: 0;
+} */
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

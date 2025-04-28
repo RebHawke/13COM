@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends "_layout.html" %}
+{% block content %}
+
+
+    <h1>Are you sure you want to delete this Pokémon?</h1>
+    <p>Pokémon: {{ pokemon['name'] }}</p>
+    <form method="POST">
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="/">Cancel</a>
+
+{% endblock %}

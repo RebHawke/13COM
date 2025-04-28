@@ -1,0 +1,37 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<h1> {{ pokemon['name'] }}
+
+<img src="{{ pokemon['image'] }}">
+
+<p>
+    {{ pokemon['name'] }}
+    is a {{ pokemon['type1'] }}
+    {% if pokemon['type2'] %}
+        and  {{ pokemon['type2'] }}
+    {% endif %}
+    <br>
+    type:  {{ pokemon['category'] }}
+    <br>
+    generation:  {{ pokemon['generation'] }}
+
+</p>
+
+<h2> stats </h2>
+<table>
+    <tr>
+        <th>Attack</th>
+        <th>Health</th>
+        <th>Defence</th>
+        <th>Speed</th>
+    </tr>
+    <tr>
+        <td> {{ pokemon['attack'] }} </td>
+        <td> {{ pokemon['health'] }} </td>
+        <td> {{ pokemon['defence'] }} </td>
+        <td> {{ pokemon['speed'] }} </td>
+    </tr>
+
+
+{% endblock %}

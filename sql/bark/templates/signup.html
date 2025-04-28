@@ -1,0 +1,18 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<h1>Sign Up</h1>
+{# encoding type allows files #}
+        <form action="/signup" method="POST" enctype="multipart/form-data"> 
+            Name:
+            <input type="text" name="name" maxlength="255" required> <br>
+            Username:
+            <input type="text" name="username" maxlength="15" required> <br>
+            Password:
+            <input type="password" name="password" required> <br>
+            Profile:
+            <input id="profile" name="profile" type="file" accept="image/*"> <br>
+            <input type="submit" value="Sign Up">
+        </form>
+
+{% endblock %}

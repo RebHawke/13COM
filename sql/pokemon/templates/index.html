@@ -1,0 +1,38 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<div class="headers">
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Image</th>   
+        <th>Number</th>
+        <th>Generation</th>
+        <th>Type 1</th>
+        <th>Type 2</th>
+        <th>Health</th>
+    </tr>
+</div>
+    
+{% for pokemon in result %}
+    <tr>
+        <td>{{ pokemon["id"] }}</td>
+        <td><a href="/view?id={{ pokemon['id'] }}">{{ pokemon["name"] }} </td>
+        <td><img src="{{ pokemon['image'] }}" width="100"> </td>
+        <td>{{ pokemon["number"] }} </td>
+        <td>{{ pokemon["generation"]}} </td>
+
+        {% if pokemon['type2'] %}
+            <td class="type-{{ pokemon['type1']|lower }}">{{ pokemon["type1"] }} </td>
+            <td class="type-{{ pokemon['type2']|lower }}">{{ pokemon["type2"] }} </td>
+        {% else %}
+            <td colspan="2" class="type-{{ pokemon['type1']|lower }}">{{ pokemon["type1"] }} </td>
+        {% endif %}
+        
+        <td>{{ pokemon["health"] }} </td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

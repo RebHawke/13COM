@@ -1,0 +1,25 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<div class="headers">
+<table>
+    <tr>
+        <th>Posted By</th>
+        <th>Content</th>
+        <th>delete<th>
+        <th>edit<th>
+    </tr>
+</div>
+    
+{% for post in posts %}
+    <tr>
+        <td>{{ post["name"] }}</td>
+        <td>{{ post["content"]}} </td>
+        <td> <button> <a href="/posts/delete-{{ post['id'] }}"> Delete </a> </button> </td>
+        <td> <button> <a href="/posts/edit-{{ post['id'] }}"> Edit </a> </button> </td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+

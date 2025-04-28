@@ -1,0 +1,47 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<input type="text" class="live-search-box" placeholder="search here" /> 
+
+<table class="live-search-list">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Image</th>   
+            <th>Number</th>
+            <th>Generation</th>
+            <th>Type 1</th>
+            <th>Type 2</th>
+            <th>Health</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pokemon in result %}
+        <tr data-search-term="{{ pokemon['name']|lower }} {{ pokemon['id']|lower }} {{ pokemon['number']|lower }} {{ pokemon['generation']|lower }} {{ pokemon['type1']|lower }} {{ pokemon['type2']|lower }} {{ pokemon['health']|lower }}">
+            
+            <td>{{ pokemon["id"] }}</td>
+            <td><a href="/view?id={{ pokemon['id'] }}">{{ pokemon["name"] }}</a></td>
+            <td><img src="{{ pokemon['image'] }}" width="100"> </td>
+            <td>{{ pokemon["number"] }} </td>
+            <td>{{ pokemon["generation"]}} </td>
+
+            {% if pokemon['type2'] %}
+            <td class="type-{{ pokemon['type1']|lower }}">{{ pokemon["type1"] }} </td>
+            <td class="type-{{ pokemon['type2']|lower }}">{{ pokemon["type2"] }} </td>
+            {% else %}
+            <td colspan="2" class="type-{{ pokemon['type1']|lower }}">{{ pokemon["type1"] }} </td>
+            {% endif %}
+            
+            <td>{{ pokemon["health"] }} </td>
+            <td> <button> <a href="/delete-pokemon-{{ pokemon['id'] }}"> Delete </a> </button> </td>
+            <td> <button> <a href="/edit-pokemon-{{ pokemon['id'] }}"> Edit </a> </button> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

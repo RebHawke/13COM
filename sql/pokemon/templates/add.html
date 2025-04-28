@@ -1,0 +1,72 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<h1>Add A Pokemon</h1>
+
+        <form action="/add" method="POST">
+            Name:
+            <input type="text" name="name" maxlength="255" required> <br>
+            Image (paste a link):
+            <input type="text" name="image" required> <br>
+            Number:
+            <input type="number" name="number" maxlength="5" required> <br>
+            Generation:
+            <input type="number" name="generation" required> <br>
+            Type 1:
+            <select name="type1" id="cars">
+                <option value="empty" selected disabled hidden>N/A</option>
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="electric">Electric</option>
+                <option value="grass">Grass</option>
+                <option value="ice">Ice</option>
+                <option value="fighting">Fighting</option>
+                <option value="poison">Poison</option>
+                <option value="ground">Ground</option>
+                <option value="flying">Flying</option>
+                <option value="psychic">Psychic</option>
+                <option value="bug">Bug</option>
+                <option value="rock">Rock</option>
+                <option value="ghost">Ghost</option>
+                <option value="dragon">Dragon</option>
+                <option value="dark">Dark</option>
+                <option value="steel">Steel</option>
+                <option value="fairy">Fairy</option>
+            </select>
+            Type 2 (if applicable):
+            <select name="type2">
+                <option value="empty">N/A</option>
+                <option value="fire">Fire</option>
+                <option value="water">Water</option>
+                <option value="electric">Electric</option>
+                <option value="grass">Grass</option>
+                <option value="ice">Ice</option>
+                <option value="fighting">Fighting</option>
+                <option value="poison">Poison</option>
+                <option value="ground">Ground</option>
+                <option value="flying">Flying</option>
+                <option value="psychic">Psychic</option>
+                <option value="bug">Bug</option>
+                <option value="rock">Rock</option>
+                <option value="ghost">Ghost</option>
+                <option value="dragon">Dragon</option>
+                <option value="dark">Dark</option>
+                <option value="steel">Steel</option>
+                <option value="fairy">Fairy</option>
+            </select>
+            Health:
+            <input type="number" name="health" required> <br>
+            Attack:
+            <input type="number" name="attack" required> <br>
+            Defence:
+            <input type="number" name="defence" required> <br>
+            Special Attack:
+            <input type="number" name="special_attack" required> <br>
+            Special Defence:
+            <input type="number" name="special_defence" required> <br>
+            Speed:
+            <input type="number" name="speed" required> <br>
+            <input type="submit" value="Add">
+        </form>
+
+{% endblock %}

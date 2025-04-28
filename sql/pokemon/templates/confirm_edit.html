@@ -1,0 +1,75 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<h1> Editing: {{ pokemon['name'] }}</h1>
+
+
+<h2> Update Pokemon: </h2>
+<form action="/edit-pokemon-{{ pokemon['id'] }}" method="POST">
+    Name:
+    <input type="text" name="name" maxlength="255" value= "{{ pokemon['name'] }}"> <br>
+    Image (paste a link):
+    <input type="text" name="image" value= "{{ pokemon['image'] }}"> <br>
+    Number:
+    <input type="number" name="number" maxlength="5" value="{{ pokemon['number']}}"> <br>
+    Generation:
+    <input type="number" name="generation" value="{{ pokemon['generation'] }}"> <br>
+    Type 1:
+    <select name="type1">
+        <option value="empty" selected disabled hidden>N/A</option>
+        <option value="fire" {% if pokemon.type1 == 'Fire' %} selected {% endif %}>Fire</option>
+        <option value="water" {% if pokemon.type1 == 'Water' %} selected {% endif %}>Water</option>
+        <option value="electric" {% if pokemon.type1 == 'Electric' %} selected {% endif %}>Electric</option>
+        <option value="grass" {% if pokemon.type1 == 'Grass' %} selected {% endif %}>Grass</option>
+        <option value="ice" {% if pokemon.type1 == 'Ice' %} selected {% endif %}>Ice</option>
+        <option value="fighting" {% if pokemon.type1 == 'Fighting' %} selected {% endif %}>Fighting</option>
+        <option value="poison" {% if pokemon.type1 == 'Poison' %} selected {% endif %}>Poison</option>
+        <option value="ground" {% if pokemon.type1 == 'Ground' %} selected {% endif %}>Ground</option>
+        <option value="flying" {% if pokemon.type1 == 'Flying' %} selected {% endif %}>Flying</option>
+        <option value="psychic" {% if pokemon.type1 == 'Psychic' %} selected {% endif %}>Psychic</option>
+        <option value="bug" {% if pokemon.type1 == 'Bug' %} selected {% endif %}>Bug</option>
+        <option value="rock" {% if pokemon.type1 == 'Rock' %} selected {% endif %}>Rock</option>
+        <option value="ghost" {% if pokemon.type1 == 'Ghost' %} selected {% endif %}>Ghost</option>
+        <option value="dragon" {% if pokemon.type1 == 'Dragon' %} selected {% endif %}>Dragon</option>
+        <option value="dark" {% if pokemon.type1 == 'Dark' %} selected {% endif %}>Dark</option>
+        <option value="steel" {% if pokemon.type1 == 'Steel' %} selected {% endif %}>Steel</option>
+        <option value="fairy" {% if pokemon.type1 == 'Fairy' %} selected {% endif %}>Fairy</option>
+    </select>
+    
+    Type 2 (if applicable):
+    <select name="type2">
+        <option value="empty" {% if pokemon.type2 == "empty" %} selected {% endif %}>N/A</option>
+        <option value="fire" {% if pokemon.type2 == 'Fire' %} selected {% endif %}>Fire</option>
+        <option value="water" {% if pokemon.type2 == 'Water' %} selected {% endif %}>Water</option>
+        <option value="electric" {% if pokemon.type2 == 'Electric' %} selected {% endif %}>Electric</option>
+        <option value="grass" {% if pokemon.type2 == 'Grass' %} selected {% endif %}>Grass</option>
+        <option value="ice" {% if pokemon.type2 == 'Ice' %} selected {% endif %}>Ice</option>
+        <option value="fighting" {% if pokemon.type2 == 'Fighting' %} selected {% endif %}>Fighting</option>
+        <option value="poison" {% if pokemon.type2 == 'Poison' %} selected {% endif %}>Poison</option>
+        <option value="ground" {% if pokemon.type2 == 'Ground' %} selected {% endif %}>Ground</option>
+        <option value="flying" {% if pokemon.type2 == 'Flying' %} selected {% endif %}>Flying</option>
+        <option value="psychic" {% if pokemon.type2 == 'Psychic' %} selected {% endif %}>Psychic</option>
+        <option value="bug" {% if pokemon.type2 == 'Bug' %} selected {% endif %}>Bug</option>
+        <option value="rock" {% if pokemon.type2 == 'Rock' %} selected {% endif %}>Rock</option>
+        <option value="ghost" {% if pokemon.type2 == 'Ghost' %} selected {% endif %}>Ghost</option>
+        <option value="dragon" {% if pokemon.type2 == 'Dragon' %} selected {% endif %}>Dragon</option>
+        <option value="dark" {% if pokemon.type2 == 'Dark' %} selected {% endif %}>Dark</option>
+        <option value="steel" {% if pokemon.type2 == 'Steel' %} selected {% endif %}>Steel</option>
+        <option value="fairy" {% if pokemon.type2 == 'Fairy' %} selected {% endif %}>Fairy</option>
+    </select>
+    Health:
+    <input type="number" name="health" value="{{ pokemon['health'] }}"> <br>
+    Attack:
+    <input type="number" name="attack" value="{{ pokemon['attack'] }}"> <br>
+    Defence:
+    <input type="number" name="defence" value="{{ pokemon['defence'] }}"> <br>
+    Special Attack:
+    <input type="number" name="special_attack" value="{{ pokemon['special_attack'] }}"> <br>
+    Special Defence:
+    <input type="number" name="special_defence" value="{{ pokemon['special_defence'] }}"> <br>
+    Speed:
+    <input type="number" name="speed" value="{{ pokemon['speed'] }}"> <br>
+    <input type="submit" value="submit">
+</form>
+
+{% endblock %}

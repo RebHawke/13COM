@@ -1,0 +1,15 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<h1> Welcome to Bark Therapy </h1> <br>
+
+{% if "user_id" not in session %}
+<h2><a href="/signup"> Sign Up Now! </a> </h2>
+<h2><a href="/login"> Login </a> </h2>
+{% endif %}
+
+{% if "user_id" in session %}
+<h2><a href="/logout"> Logout </a> </h2>
+{% endif %}
+
+{% endblock %}

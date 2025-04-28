@@ -1,0 +1,39 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<h1> Editing: {{ recipe['name'] }}</h1>
+
+<div class="headers">
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+</div>
+    
+{% for ingredient in ingredients %}
+    <tr>
+        <td>{{ ingredient["ingredient_id"] }}</td>
+        <td>{{ ingredient["name"] }}</td>
+        <td>
+            <form action="/add_ingredient_to_recipe" method="POST">
+                <input type="hidden" name="ingredient_id" value="{{ ingredient['ingredient_id'] }}">
+                <input type="hidden" name="recipe_id" value="{{ recipe['id'] }}">
+                <button type="submit">Add to recipe</button>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+<h1>Create Ingredient</h1>
+{# encoding type allows files #}
+<form action="/create_ingredient" method="POST"> 
+    Name:
+    <input type="text" name="name" maxlength="255" required> <br>
+    <input type="submit" value="Create">
+</form>
+
+
+
+{% endblock %}

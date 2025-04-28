@@ -1,0 +1,34 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<form  method="post" action="/game"> 
+    <label for="start">Pick a starting number:</label>
+    <input type="number" name="start" id="start" required>
+    <input type="submit" value="submit">
+</form>
+
+
+{% if snum %}
+<h2>Starting number: {{ snum }}</h2>
+<h2>Computer chose: {{ scompnum }}!</h2>
+<form  method="post" action="/game"> 
+    <label for="name">Pick a number:</label>
+    <input type="number" name="num" id="num" required>
+    <input type="submit" value="submit">
+</form>
+{% endif %}
+
+{% if num %}
+<h2>Your number: {{ num }}!</h2>
+<h2>Computer chose: {{ compnum }}!</h2>
+{% endif %}
+
+{% if numberstack %}
+<h2>{{numberstack}}</h2>
+{% endif %}
+
+{% if total %}
+<h2>{{total}}</h2>
+{% endif %}
+
+{% endblock %}

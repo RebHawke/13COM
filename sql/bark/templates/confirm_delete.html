@@ -1,0 +1,12 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+
+    <h1>Are you sure you want to delete this post?</h1>
+    <p>post: {{ posts['content'] }}</p>
+    <form method="POST">
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="/">Cancel</a>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+{% if "user_id" in session %}
+<h1>Create a post!</h1>
+
+        <form action="/posts/add" method="POST">
+            Message:
+            <input type="text" name="content" maxlength="255" required> <br>
+            <input type="submit" value="add">
+        </form>
+{% endif %}
+
+{% endblock %}
