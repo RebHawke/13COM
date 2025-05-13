@@ -7,7 +7,7 @@ html, body {
 }
 
 .endfooter {
-    background-color: #868686;
+    background-color: #EB0000;
 }
 
 /* Main container where the video is */
@@ -16,34 +16,6 @@ html, body {
     width: 100%;
     height: 100vh; /* Full viewport height */
     overflow: hidden;
-}
-
-/* Style for the video */
-#myVideo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the video covers the screen */
-    z-index: -1; /* Send video behind content */
-}
-
-/* Style for the text */
-.writing {
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    transform: translate(5%, -50%);
-    color: white; /* Make text visible on top of video */
-    z-index: 1;
-    text-align: left;
-    font-size: 25%;
-}
-
-.writing h1 {
-    margin-left: 10px;
-    padding: 0px;
 }
 
 /* Style for the footer */
@@ -55,22 +27,6 @@ html, body {
     text-align: center;
     margin-top: 20px;
 }
-.f1, .f2 {
-    display: inline;
-    margin: 0px;
-    padding: 0px;
-    line-height:35px;
-    
-}
-/* .f1 {
-    font-family: [enter first font family here];
-} */
-  
-.f2 {
-    /* font-family: [enter second font family here]; */
-    font-style: italic;
-}
-
 
 /* Set a specific height for the navbar to leave space for the logo ribbon */
 .navbar {
@@ -78,52 +34,140 @@ html, body {
     z-index: 10;
 }
 
-/* V-ribbon shape styling */
-.v-ribbon {
-    position: absolute;
-    left: 10px; /* Move it a bit to the left */
-    top: 0px; /* Adjust it so the ribbon is slightly above the navbar */
-    width: 100px; /* Control the width of the ribbon */
-    height: 100px; /* Adjust height to the size of the logo */
-    background-color: #69696963; 
-    clip-path: polygon(10% 0%, 90% 0%, 90% 80%, 50% 60%, 10% 80%); /* mkaes the ribbon shape */
-    z-index: 5;
+
+.bg-nav {
+    /* background-color: #E2DDCC; */
+    background-color: white;
 }
 
-/* Adjust the logo inside the ribbon */
-.v-ribbon .logo {
-    width: 80px; /* Logo width */
-    height: auto;
+.custom-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.title-text {
+    color: #EB0000;
+    font-family: "Modak", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 400%;
+}
+
+.logo-text {
+    color: #EB0000;
+    font-family: "Modak", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 200%;
+    text-decoration: none;
+}
+
+
+.search-box-row {
+    background-color: #F5F1E7;
+}
+
+.search-container {
     position: relative;
-    top: -7px;
+}
+
+.search-input {
+    height: 50px;
+    border-radius: 30px;
+    padding-left: 35px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.button_image {
+    height: 100vh;
+    display: block;
+    margin: auto;
+    z-index: 0;
+}
+
+
+.buttons-row {
+    margin-inline: 10%;
+}
+
+.back {
+    position: fixed;
+    top: 10px;
     left: 10px;
+    height: 10vh;
+    
 }
 
-/* Cursor */
-.cursor {
-    position: relative;
-    width: 24em;
-    margin: 20px auto 0; /* Added top margin for spacing */
-    border-right: 2px solid rgba(255,255,255,.75);
-    text-align: left;
-    white-space: nowrap;
+.form-container {
+    text-align: center;
+}
+
+.log-in-bg {
+    background-color: #ffffff;
     overflow: hidden;
-    transform: translateY(-50%);    
 }
 
-/* Animation */
-.typewriter-animation {
-  animation: 
-    typewriter 2s steps(40, end) 0s 1 normal both, /* Fast typewriter animation with fewer steps */
-    blinkingCursor 500ms steps(1) infinite normal; /* Smooth blinking cursor */
+#top, #bottom, #left, #right {
+	background: #F5F1E7;
+	position: fixed;
+    z-index: 1;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 5px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 5px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
+
+/* //////////////////////////////////////////// */
+
+.flip-card-container {
+    perspective: 1000px;
+    width: 100%;
+    height: 100vh;
 }
 
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
-@keyframes blinkingCursor {
-  from { border-right-color: rgba(255,255,255,.75); }
-  to { border-right-color: transparent; }
+.flip-card-inner.flipped {
+    transform: rotateY(180deg);
 }
+
+
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    z-index: 2;
+}
+
+.flip-card-back {
+    z-index: 1;
+    background-color: #f8f9fa;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+

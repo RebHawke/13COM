@@ -1,8 +1,35 @@
-{% extends "_layout.html" %}
+{% extends "_layout2.html" %}
 {% block content %}
 
-<a href="/signup">signup</a>
-<a href="/login">login</a>
+<nav class="custom-shadow bg-nav py-3">
+    <div class="container text-center">
+        <h1 class="title-text">Bake|r</h1>
+    </div>
+    <div class="container">
+        <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link text-black" href="#">categorised</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-black" href="#">all-recipes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-black" href="/accounts">account</a>
+        </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row search-box-row">
+    <div class="container m-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 search-container">
+                <input type="text" class="form-control search-input" placeholder="Search...">
+            </div>
+        </div>
+    </div>
+</div>
+
 <a href="/logout">logout</a>
 <a href="/recipe/create">create recipe</a>
 <a href="/recipe/ingredients">ingredients</a>

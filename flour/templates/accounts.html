@@ -1,0 +1,47 @@
+{% extends "_layout3.html" %}
+{% block content %}
+<div class="log-in-bg">
+    <div id="left"></div>
+    <div id="right"></div>
+    <div id="top"></div>
+    <div id="bottom"></div>
+    <div class="container log-in-bg">
+        <a href="/"><img class="back" src="/static/images/back.png" alt="Back Button"></a>
+        <div class="row buttons-row">
+            <div class="col">
+
+                <div class="flip-card-container position-relative">
+                    <div class="flip-card-inner" id="flipCard">
+                        <!-- Front -->
+                        <div class="flip-card-front">
+                            <img class="button_image" src="/static/images/new.png" alt="Sign Up Button" id="flipTrigger">
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back d-flex justify-content-center align-items-center" id="flipBackTrigger">
+                            <h1 class="text-center text-dark">Sign Up Coming Soon</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+
+                <div class="flip-card-container position-relative">
+                    <div class="flip-card-inner" id="flipCard2">
+                        <!-- Front -->
+                        <div class="flip-card-front">
+                           <img class="button_image" src="/static/images/old.png" alt="Sign In Button" id="flipTrigger2">                    
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back d-flex justify-content-center align-items-center" id="flipBackTrigger2">
+                            <h1 class="text-center text-dark">Sign In Coming Soon</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -29,6 +29,10 @@ def index():
 ################################# P R O F I L E S ##############################################
 ################################################################################################
 
+@app.route("/accounts")
+def account():
+    return render_template("accounts.html")
+
 # Login route
 @app.route("/signup" , methods=["GET", "POST"])
 def sign_up():
