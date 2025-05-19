@@ -18,6 +18,22 @@
             {# ck editor (creates a text box that converts input to html code) #}
             <textarea id="editor" name="steps"></textarea>
             <input type="submit" value="Create">
+        {# </form> #}
+
+        <table>
+        {% for ingredient in ingredients %}
+            <tr>
+                <td><input type="checkbox" name="ingredient_id" value="{{ ingredient['ingredient_id'] }}"</td>
+                <td>{{ ingredient["name"] }}</td>
+                <td>
+                    {# <form action="/recipe/create" method="POST">
+                        <input type="hidden" name="ingredient_id" value="{{ ingredient['ingredient_id'] }}">
+                        <button type="submit">Add to recipe</button>
+                    </form> #}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
         </form>
 
     <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>

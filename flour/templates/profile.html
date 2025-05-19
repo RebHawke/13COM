@@ -1,0 +1,29 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <h1> Welcome {{name}} </h1>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-12 top-box">
+                    <h1>Your Details</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 bottom-box">
+                    <a class="btn btn-outline-primary log-out-button" href="/logout" role="button">Log Out</a>
+                    {# suggested recipes? #}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 liked-box">
+            <h1 class="p-5">Your Liked Recipes</h1>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

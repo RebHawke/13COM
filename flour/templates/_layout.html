@@ -28,14 +28,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
+                        <a class="nav-link" href="#">All recipes</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="/profiles">Profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
+                    {% if session.get("role") == "admin" or session.get("role") == "author" %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/recipe/create">Create Recipe</a>
+                        </li>
+                    {% endif %}
                 </ul>
 
                 <form class="d-flex">

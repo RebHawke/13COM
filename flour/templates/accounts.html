@@ -17,8 +17,29 @@
                             <img class="button_image" src="/static/images/new.png" alt="Sign Up Button" id="flipTrigger">
                         </div>
                         <!-- Back -->
-                        <div class="flip-card-back d-flex justify-content-center align-items-center" id="flipBackTrigger">
-                            <h1 class="text-center text-dark">Sign Up Coming Soon</h1>
+                        <div class="flip-card-back d-flex justify-content-center align-items-center">
+                            <form action="/signup" method="POST"> 
+                                <h1> New Here? </h1>
+                                Name:
+                                <input type="text" name="name" maxlength="255" required> <br>
+                                Username:
+                                <input type="text" name="username" maxlength="15" required> <br>
+                                Password:
+                                <input type="password" name="password" required> <br>
+                                Email:
+                                <input type="email" name="email" required> <br>
+                                Skill Level:
+                                <select name="skill" id="skill">
+                                    <option value="empty" selected disabled hidden>Choose Here</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                    <option value="any">N/A</option>
+                                </select>
+                                <br>
+                                <input type="submit" value="Sign Up"> <br> <br> <br> <br>
+                                <button type="button" id="flipBackTrigger">Flip me back!</button> 
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -33,8 +54,16 @@
                            <img class="button_image" src="/static/images/old.png" alt="Sign In Button" id="flipTrigger2">                    
                         </div>
                         <!-- Back -->
-                        <div class="flip-card-back d-flex justify-content-center align-items-center" id="flipBackTrigger2">
-                            <h1 class="text-center text-dark">Sign In Coming Soon</h1>
+                        <div class="flip-card-back d-flex justify-content-center align-items-center">
+                            <form action="/login" method="POST"> 
+                                <h1> Have an account? </h1>
+                                Username:
+                                <input type="text" name="username" maxlength="45" required> <br>
+                                Password:
+                                <input type="password" name="password" required> <br>
+                                <input type="submit" value="Log In"> <br> <br> <br>
+                                <button type="button" id="flipBackTrigger2">Flip me back!</button> 
+                            </form>
                         </div>
                     </div>
                 </div>

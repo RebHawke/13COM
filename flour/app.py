@@ -29,6 +29,7 @@ def index():
 ################################# P R O F I L E S ##############################################
 ################################################################################################
 
+
 @app.route("/accounts")
 def account():
     return render_template("accounts.html")
@@ -44,15 +45,32 @@ def sign_up():
         email = request.form["email"]
         skill = request.form["skill"]
         
+        try:
+            with create_connection() as connection:
+                with connection.cursor() as cursor:
+                    sql = "INSERT INTO profiles (name, username, password, email, skill) VALUES (%s, %s, %s, %s, %s)"
+                    values = (name, username, encrypt(password), email, skill)
+                    cursor.execute(sql, values)
+                    connection.commit()
 
-        with create_connection() as connection:
-            with connection.cursor() as cursor:
-                sql = "INSERT INTO profiles (name, username, password, email, skill) VALUES (%s, %s, %s, %s, %s)"
-                values = (name, username, encrypt(password), email, skill)
-                cursor.execute(sql, values)
-                connection.commit()
-                return redirect("/")
-    return render_template("signup.html")
+                    with connection.cursor() as cursor:
+                        sql = "SELECT * FROM profiles WHERE username = %s AND password = %s"
+                        cursor.execute(sql, (username, encrypt(password)))
+                        profile = cursor.fetchone()
+
+                    session['user_id'] = profile['user_id'] #user_id is what knows uf u are logged in
+                    session['name'] = profile['name']
+                    session['username'] = profile['username']  
+                    session['role'] = profile['role']  #admin, user, author
+                    flash("Logged In, Welcome " + (session['name']))
+
+                    return redirect("/profiles")
+        except pymysql.err.IntegrityError as e: #duplicate is an integrity error not data error so needs to be in a seperate statement
+            if "1062" in str(e):  
+                print("double")
+                flash("Duplicate name")
+                return redirect("/")        
+        
 
 def encrypt(password):
     import hashlib #encodes the passowrd for security, creates a random string 
@@ -77,14 +95,22 @@ def login():
             session['username'] = profile['username']  
             session['role'] = profile['role']  #admin, user, author
             flash("Logged In, Welcome " + (session['name']))
-            return redirect("/")
+            return redirect("/profiles")
         
         else:
             flash("Invalid Credentials")
             return render_template("login.html", error="Invalid credentials")
         
+@app.route("/profiles")
+def profile():
+    if 'user_id' in session:
+        name = session['name']
+        id = session['user_id']
+        username = session['username']
+        return render_template("profile.html", name=name, id=id, username=username)
+    else:
+        return redirect("/accounts")
 
-    return render_template("login.html")
 
 @app.route("/logout")
 def logout():
@@ -106,12 +132,23 @@ def create():
             return redirect("/")
         elif session['role'] != 'user':
             print(session['role'])
-            if request.method == "POST": 
 
+            connection2 = create_connection()
+            with connection2.cursor() as cursor:
+                with connection2.cursor() as cursor:
+                    if request.method == "GET":
+                        sql = "SELECT * FROM ingredients"
+                        cursor.execute(sql, )
+                        ingredients = cursor.fetchall()
+
+            if request.method == "POST": 
+                print(request.form.getlist('ingredient_id'))
                 name = request.form["name"]
                 skill = request.form["skill"]
                 date = datetime.now().date() #allows the program to find the date without the user needing to input date
                 steps = request.form["steps"] #the ckeditor
+                
+                ingredient_id = request.form.getlist('ingredient_id')
 
 
                 with create_connection() as connection:
@@ -119,50 +156,18 @@ def create():
                         sql = "INSERT INTO recipes (name, skill, date_posted, steps) VALUES (%s, %s, %s, %s)"
                         values = (name, skill, date, steps) #creates a more robust program using %s
                         cursor.execute(sql, values)
+                        recipe_id = cursor.lastrowid
+
+                        for ingredient in ingredient_id:
+                            sql2 = "INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES (%s, %s)"
+                            values2 = (recipe_id, ingredient)  
+                            cursor.execute(sql2, values2)
+                        print("Last inserted row ID:", )
                         connection.commit()
+                        flash("recipe created")
                         return redirect("/")
-            return render_template("create_recipe.html")
+            return render_template("create_recipe.html", ingredients = ingredients)
 
-
-
-@app.route("/recipe/ingredients" , methods=["GET", "POST"]) #route displays the table with recipes, not adds ingredients to them
-def ingredient():
-    with create_connection() as connection:
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM recipes")
-            recipes = cursor.fetchall()
-    return render_template("ingredients.html", recipes=recipes)
-
-
-
-@app.route("/add/ingredient-<int:id>", methods=["GET", "POST"]) #route displays ingredients avalible to add or create
-def add_ingredients(id):
-    connection = create_connection()
-    with connection.cursor() as cursor:
-        if request.method == "GET":
-            sql = "SELECT * FROM recipes WHERE id = %s"
-            cursor.execute(sql, (id,))
-            recipe = cursor.fetchone()
-    connection2 = create_connection()
-    with connection2.cursor() as cursor:
-        if request.method == "GET":
-            sql = "SELECT * FROM ingredients"
-            cursor.execute(sql, )
-            ingredients = cursor.fetchall()
-            return render_template('ingredient_list.html', recipe=recipe, ingredients=ingredients)
-
-
-@app.route('/add_ingredient_to_recipe', methods=['POST']) #finally adds the ingredients
-def add_ingredient_to_recipe():
-    ingredient_id = request.form.get('ingredient_id')
-    recipe_id = request.form.get('recipe_id')
-    with create_connection() as connection:
-            with connection.cursor() as cursor:
-                sql = "INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES (%s, %s)"
-                values = (recipe_id, ingredient_id)
-                cursor.execute(sql, values)
-                connection.commit()
-                return redirect("/")
     
 
 @app.route("/create_ingredient" , methods=["GET", "POST"])
