@@ -5,13 +5,16 @@
         <form action="/recipe/create" method="POST"> 
             Name:
             <input type="text" name="name" maxlength="255" required> <br>
+            
+            Image (paste a link):
+            <input type="text" name="image" required><br>
 
             Skill Level:
             <select name="skill" id="skill">
                 <option value="empty" selected disabled hidden>Choose Here</option>
                 <option value="beginner">Beginner</option>
                 <option value="intermediate">intermediate</option>
-                <option value="advanced">Advanced</option>
+                <option value="advanced">Advanced</option> 
                 <option value="any">N/A</option>
             </select>
 
@@ -35,6 +38,13 @@
         {% endfor %}
         </table>
         </form>
+
+        <form action="/ingredient/create" method="POST">
+            Name of ingredient:
+            <input type="text" name="name" maxlength="255" required>
+            <input type="submit" value="submit">
+        </form>
+
 
     <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
     <script>ClassicEditor.create(document.querySelector('#editor'), {toolbar: {removeItems: ['uploadImage']}});</script>

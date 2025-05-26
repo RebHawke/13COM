@@ -1,0 +1,33 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<div class="row search-box-row">
+    <div class="container m-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 search-container">
+                <input type="text" class="form-control search-input live-search-box" placeholder="Search...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container live-search-list">
+    <div class="row">
+        {% for recipes in result %}
+        <div class="col-md-3 mb-4" data-search-term="{{ recipes['name']|lower }}">                
+            <div class="card">
+                <a href="{{ url_for('view') }}?id={{ recipes.id }}">
+                    <img class="card-img-top" src="{{ recipes['image'] }}" alt="Card image">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">{{ recipes['name'] }}</h4>
+                    <p class="card-text"></p>
+                </div>
+            </div>            
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

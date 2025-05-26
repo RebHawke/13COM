@@ -2,3 +2,8 @@
 add photo for recipes (later)
 add serving sizes
 add macro calculator? (advanced)
+
+
+IMPROVEMENTS:
+changing username as a duplicate wont produce error but doesnt inform the user of the lack of name change
+confirm delete button looks ugly

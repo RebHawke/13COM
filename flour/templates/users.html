@@ -1,0 +1,62 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<h1> Current Users </h1>
+<!-- Button trigger modal -->
+<table class="profile_table">
+    <tr>
+        <th>Name</th>
+        <th>Username</th>   
+        <th>Role</th>
+        <th>Email</th>
+        <th>Skill</th>
+        <th>DELETE ACCOUNT</th>
+    </tr>
+
+    {% for profiles in result %}
+    <tr>
+        <td>{{ profiles["name"] }}</td>
+        <td>{{ profiles["username"] }}</td>
+        <td>
+            <a class="btn btn-outline-primary log-out-button" role="button" data-bs-toggle="modal" data-bs-target="#modal-{{ profiles['user_id'] }}">{{profiles["role"]}}</a>
+            <div class="modal fade" id="modal-{{ profiles['user_id'] }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Current role: {{profiles["role"]}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/account/update/admin" method="POST" id="edit-{{ profiles['user_id'] }}">
+                            <input type="hidden" name="user_id" value="{{ profiles['user_id'] }}">
+                            <select name="role" class="form-select">
+                                <option value="admin">Admin</option>
+                                <option value="author">Author</option>
+                                <option value="user">User</option>
+                            </select>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <div>
+                            <button type="submit" class="btn btn-primary" form="edit-{{ profiles['user_id'] }}">Submit</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </td>
+        <td>{{ profiles["email"] }}</td>
+        <td>{{ profiles["skill"] }}</td>
+        <td><form action="/account/delete/admin" method="POST">
+              <input type="hidden" name="user_id" value="{{ profiles['user_id'] }}">
+              <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -205,3 +205,38 @@ html, body {
     align-content: center;
     justify-content: center;
 }
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.profile_table {
+    width: 80%;
+    padding: 10%;
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Adds space between tables */
+}
+
+.profile_table th, .profile_table td {
+    border: 1px solid;
+    padding: 10px;
+    text-align: left;
+}
+
+.btn-custom {
+    background-color: rgb(205, 205, 205);
+}
+
+.btn-white {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* add shadow */
+    width: 100%; 
+    text-align: center; 
+    display: inline-block; 
+}
+
+.btn-white:hover {
+    background-color: rgb(245, 245, 245); 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+}
