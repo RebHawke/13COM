@@ -100,6 +100,23 @@
         </div>
         <div class="col-md-6 liked-box">
             <h1 class="p-5">Your Liked Recipes</h1>
+            <div class="container live-search-list">
+                <div class="row">
+                {% for recipes in result %}
+                    <div class="col-md-3 mb-4" data-search-term="{{ recipes['name']|lower }}">                
+                        <div class="card">
+                            <a href="{{ url_for('view') }}?id={{ recipes.id }}">
+                                <img class="card-img-top" src="{{ recipes['image'] }}" alt="Card image">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ recipes['name'] }}</h4>
+                                <p class="card-text"></p>
+                            </div>
+                        </div>            
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </div>

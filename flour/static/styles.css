@@ -69,15 +69,11 @@ html, body {
 
 .search-container {
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
-.search-input {
-    height: 50px;
-    border-radius: 30px;
-    padding-left: 35px;
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+
 
 .button_image {
     height: 100vh;
@@ -239,4 +235,42 @@ html, body {
 .btn-white:hover {
     background-color: rgb(245, 245, 245); 
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.custom-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  border-radius: 20px;
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+  border-bottom: 5px solid #b46436;
+  transition: 0.3s;
+  background-color: #eb8b54;
+}
+
+.custom-button:hover {
+  border-bottom-width: 0;
+  transform: translateY(5px);
+  background-color: #eb8b54;
+  color: white
+
+}
+
+.create_box {
+    background-color: beige;
+}
+
+.recipe_container {
+    margin-left: 2;
+}
+
+.box1 {
+    display: flex;
+    justify-content: center;
+    padding: 10%;
 }

@@ -1,11 +1,32 @@
 {% extends "_layout.html" %}
 {% block content %}
 
-<h1> {{ recipes['name'] }} </h1>
-<img src="{{ recipes['image'] }}" alt="Card image">
+<h1> {{ recipe['name'] }} </h1>
+<img src="{{ recipe['image'] or '/static/images/back.png' }}" alt="Card image">
 
 
-<p>{{ recipes['steps'] | safe }}</p> 
+<div>
+    <p>Likes: {{ recipe.likes }}</p>
+</div>
+
+
+<p>{{ recipe['steps'] | safe }}</p> 
 {# the safe function allows raw html/tells jinja it is safe #}
+
+{% if "role" in session %}
+    {% if liked %}
+        <td><form action="/recipe/un-like" method="POST">
+                <input type="hidden" name="recipe_id" value="{{ recipe['id'] }}">
+                <button type="submit" class="btn btn-danger">Liked</button>
+            </form>
+        </td>
+    {% else %}
+        <td><form action="/recipe/like" method="POST">
+                <input type="hidden" name="recipe_id" value="{{ recipe['id'] }}">
+                <button type="submit" class="btn btn-outline-danger">Like</button>
+            </form>
+        </td>
+    {% endif %}
+{% endif %}
 
 {% endblock %}
