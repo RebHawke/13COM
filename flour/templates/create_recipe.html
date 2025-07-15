@@ -2,40 +2,28 @@
 {% block content %}
 
 <h1>Create A Recipe</h1>
-<div class="container mt-5 recipe_container">
-    <div class="row">
+    <form action="/recipe/create" method="POST">
+        <h3 class="p-2"> Recipe details: </h3> 
+        Recipe Name: 
+        <input type="text" name="name" maxlength="255" required> <br>
+        
+        Image (paste a link):
+        <input type="text" name="image" required><br>
 
-        <div class="col-md-6 create_box">
-            <div class="box1">
-                <form action="/recipe/create" method="POST">
-                    <h3 class="p-2"> Recipe details: </h3> 
-                    Recipe Name: 
-                    <input type="text" name="name" maxlength="255" required> <br>
-                    
-                    Image (paste a link):
-                    <input type="text" name="image" required><br>
+        User Skill Level:
+        <select name="skill" id="skill" class="selector">
+            <option value="empty" selected disabled hidden>Choose Here</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">intermediate</option>
+            <option value="advanced">Advanced</option> 
+            <option value="any">N/A</option>
+        </select>
 
-                    User Skill Level:
-                    <select name="skill" id="skill" class="selector">
-                        <option value="empty" selected disabled hidden>Choose Here</option>
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">intermediate</option>
-                        <option value="advanced">Advanced</option> 
-                        <option value="any">N/A</option>
-                    </select>
-                    
-            </div>
-        </div>
-            <div class="col-md-6">
-                <div class="box">
 
-                    {# ck editor (creates a text box that converts input to html code) #}
-                    <textarea id="editor" name="steps"></textarea>
-                    <input type="submit" value="Create">
-                </div>
-            </div>
-    </div>
-  </div>
+        {# ck editor (creates a text box that converts input to html code) #}
+        <textarea id="editor" name="steps"></textarea>
+        <input type="submit" value="Create">
+
 
         <table>
         {% for ingredient in ingredients %}

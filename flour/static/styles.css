@@ -6,33 +6,12 @@ html, body {
     overflow-x: hidden;
 }
 
+
+/* footer for every page */
 .endfooter {
     background-color: #EB0000;
 }
 
-/* Main container where the video is */
-.main {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
-    overflow: hidden;
-}
-
-/* Style for the footer */
-.bottom {
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Set a specific height for the navbar to leave space for the logo ribbon */
-.navbar {
-    position: relative;
-    z-index: 10;
-}
 
 
 .bg-nav {
@@ -50,7 +29,7 @@ html, body {
     font-family: "Modak", system-ui;
     font-weight: 400;
     font-style: normal;
-    font-size: 400%;
+    font-size: 400%; /* for the bake|r logo */
 }
 
 .logo-text {
@@ -58,16 +37,16 @@ html, body {
     font-family: "Modak", system-ui;
     font-weight: 400;
     font-style: normal;
-    font-size: 200%;
+    font-size: 200%; /* smaller logo */
     text-decoration: none;
 }
 
 
-.search-box-row {
-    background-color: #F5F1E7;
+.all-recipes-box-row {
+    background-color: #F5F1E7; 
 }
 
-.search-container {
+.all-recipes-container {
     position: relative;
     display: flex;
     justify-content: center;
@@ -104,6 +83,7 @@ html, body {
     overflow: hidden;
 }
 
+/* on log in page */
 #top, #bottom, #left, #right {
 	background: #F5F1E7;
 	position: fixed;
@@ -130,6 +110,8 @@ html, body {
     width: 100%;
     height: 100vh;
 }
+
+/* -------------flip cards------------------ */
 
 .flip-card-inner {
     position: relative;
@@ -166,6 +148,9 @@ html, body {
     align-items: center;
     border-radius: 5px;
 }
+
+/* --------------------------------------- */
+/* profiles page */
 
 .liked-box {
     border-radius: 10%;
@@ -237,6 +222,8 @@ html, body {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
 }
 
+/* all recipes button on main page */
+
 .custom-button {
   display: flex;
   align-items: center;
@@ -261,16 +248,4 @@ html, body {
 
 }
 
-.create_box {
-    background-color: beige;
-}
-
-.recipe_container {
-    margin-left: 2;
-}
-
-.box1 {
-    display: flex;
-    justify-content: center;
-    padding: 10%;
-}
+/* -------------------------- */
