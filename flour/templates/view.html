@@ -1,12 +1,17 @@
 {% extends "_layout.html" %}
 {% block content %}
 
-<h1> {{ recipe['name'] }} </h1>
-<img src="{{ recipe['image'] or '/static/images/back.png' }}" alt="Card image">
-
-
-<div>
-    <p>Likes: {{ recipe.likes }}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h1 class="text-center p-4"> {{ recipe['name'] }} </h1>
+            <p class="text-center">Likes: {{ recipe.likes }}</p>
+        </div>
+        
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="{{ recipe['image'] or '/static/images/back.png' }}" class="img-fluid">
+        </div>
+    </div>
 </div>
 
 

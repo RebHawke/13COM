@@ -1,3 +1,4 @@
+
 {% extends "_layout2.html" %}
 {% block content %}
 
@@ -22,7 +23,7 @@
     </div>
 </nav>
 
-<div class="row all-recipes-box-row">
+<div class="row tintedbg>
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-6 all-recipes-container">
@@ -31,6 +32,23 @@
         </div>
     </div>
 </div>
-
+<br>
+<div class="carousel"
+  data-flickity='{ "wrapAround": true, "groupCells": 2 }'>
+  {% for recipes in featured %}
+    <div class="carousel-cell">
+        <div class="card">
+            <a href="{{ url_for('view') }}?id={{ recipes.id }}">
+                <img class="card-img-top" src="{{ recipes['image'] }}" alt="Card image">
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">{{ recipes['name'] }}</h4>
+                <p class="card-text"></p>
+            </div>
+        </div> 
+    </div>
+  {% endfor %}
+</div>
+<br>
 
 {% endblock %}

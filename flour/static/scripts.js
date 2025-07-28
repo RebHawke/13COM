@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const flipTrigger = document.getElementById("flipTrigger");
     const flipBackTrigger = document.getElementById("flipBackTrigger");
 
-    flipTrigger.addEventListener("click", () => {
+    flipTrigger?.addEventListener("click", () => {
         flipCard.classList.add("flipped");
     });
 
-    flipBackTrigger.addEventListener("click", () => {
+    flipBackTrigger?.addEventListener("click", () => {
         flipCard.classList.remove("flipped");
     });
 
@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const flipTrigger2 = document.getElementById("flipTrigger2");
     const flipBackTrigger2 = document.getElementById("flipBackTrigger2");
 
-    flipTrigger2.addEventListener("click", () => {
+    flipTrigger2?.addEventListener("click", () => {
         flipCard2.classList.add("flipped");
     });
 
-    flipBackTrigger2.addEventListener("click", () => {
+    flipBackTrigger2?.addEventListener("click", () => {
         flipCard2.classList.remove("flipped");
     });
 });
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!liveSearchBox) return;
 
-    liveSearchBox.addEventListener('input', function () {
+    liveSearchBox?.addEventListener('input', function () {
         const searchTerm = liveSearchBox.value.toLowerCase();
         liveSearchListRows.forEach(row => {
             const rowData = row.dataset.searchTerm;

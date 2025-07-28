@@ -42,7 +42,7 @@ html, body {
 }
 
 
-.all-recipes-box-row {
+.tintedbg {
     background-color: #F5F1E7; 
 }
 
@@ -249,3 +249,36 @@ html, body {
 }
 
 /* -------------------------- */
+
+.scroll-box {
+    max-height: 25vh;  
+    width: 100vw;    
+    overflow-y: auto;       
+    background-color: #fff; 
+    margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* .carousel {
+  background: #EEE;
+} */
+
+.carousel-cell {
+  width: 33%; /* Four cells fit across the full carousel */
+  height: auto;
+  margin-right: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 150px;
+  font-size: 24px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+

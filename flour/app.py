@@ -24,7 +24,11 @@ def create_connection():
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    with create_connection() as connection:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM recipes WHERE featured = 'true'")
+            featured = cursor.fetchall()
+    return render_template("home.html", featured=featured)
 
 ################################################################################################
 ################################# P R O F I L E S ##############################################

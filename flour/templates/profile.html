@@ -103,18 +103,20 @@
             <div class="container live-search-list">
                 <div class="row">
                 {% for recipes in result %}
-                    <div class="col-md-3 mb-4" data-search-term="{{ recipes['name']|lower }}">                
-                        <div class="card">
-                            <a href="{{ url_for('view') }}?id={{ recipes.id }}">
-                                <img class="card-img-top" src="{{ recipes['image'] }}" alt="Card image">
-                            </a>
-                            <div class="card-body">
-                                <h4 class="card-title">{{ recipes['name'] }}</h4>
-                                <p class="card-text"></p>
+                    <div class="row mb-4" data-search-term="{{ recipes['name']|lower }}">
+                        <div class="col">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ recipes['image'] }}" alt="icon" class="me-3" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;"> 
+                                <div>
+                                    <a href="{{ url_for('view') }}?id={{ recipes.id }}">
+                                        <h4 class="card-title mb-0">{{ recipes['name'] }}</h4>
+                                    </a>
+                                    <p class="card-text"></p>
+                                </div>
                             </div>
-                        </div>            
+                        </div>
                     </div>
-                    {% endfor %}
+                {% endfor %}
                 </div>
             </div>
         </div>
