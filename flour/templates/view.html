@@ -14,9 +14,14 @@
     </div>
 </div>
 
+<div class="line">
+    <p>_</p>
+</div>
 
-<p>{{ recipe['steps'] | safe }}</p> 
+<div class="steps">
+    <p>{{ recipe['steps'] | safe }}</p> 
 {# the safe function allows raw html/tells jinja it is safe #}
+
 
 {% if "role" in session %}
     {% if liked %}
@@ -24,14 +29,17 @@
                 <input type="hidden" name="recipe_id" value="{{ recipe['id'] }}">
                 <button type="submit" class="btn btn-danger">Liked</button>
             </form>
+            <br>
         </td>
     {% else %}
         <td><form action="/recipe/like" method="POST">
                 <input type="hidden" name="recipe_id" value="{{ recipe['id'] }}">
                 <button type="submit" class="btn btn-outline-danger">Like</button>
             </form>
+            <br>
         </td>
     {% endif %}
 {% endif %}
+</div>
 
 {% endblock %}

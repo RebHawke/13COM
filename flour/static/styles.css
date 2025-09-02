@@ -52,7 +52,9 @@ html, body {
     justify-content: center;
 }
 
-
+.shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
 .button_image {
     height: 100vh;
@@ -251,8 +253,8 @@ html, body {
 /* -------------------------- */
 
 .scroll-box {
-    max-height: 25vh;  
-    width: 100vw;    
+    max-height: 25vh; 
+    width: 120%;    
     overflow-y: auto;       
     background-color: #fff; 
     margin: 0;
@@ -281,4 +283,29 @@ body { font-family: sans-serif; }
     text-align: center;
 }
 
+.name {
+    padding-left: 5%;
+    padding-top: 3%;
+}
+
+.left-recipe {
+    margin-left: 0%;
+    background-color: #F5F1E7;
+}
+
+.ing-title {
+    margin-left: 4%;
+    margin-top: 10%;
+}
+
+.steps {
+    margin-left: 5%;
+    width: 90%;
+}
+
+.line {
+    height: 0.5px;
+    background-color: rgba(69, 69, 69, 0.231);
+    color: rgba(255, 255, 255, 0);
+}
 

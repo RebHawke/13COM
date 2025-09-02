@@ -1,0 +1,28 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<h1> Recipes </h1>
+<!-- Button trigger modal -->
+<table class="profile_table">
+    <tr>
+        <th>Image</th>
+        <th>Name</th>   
+        <th>EDIT</th>
+        <th>DELETE</th>
+    </tr>
+
+    {% for recipes in result %}
+    <tr>
+        <td>{{ recipes["image"] }}</td>
+        <td>{{ recipes["name"] }}</td>
+        <td><button> <a href="/edit-recipes-{{ recipes['id'] }}"> Edit </a> </button></td>
+        <td><form action="/recipes/delete/admin" method="POST">
+              <input type="hidden" name="recipe_id" value="{{ recipes['id'] }}">
+              <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
