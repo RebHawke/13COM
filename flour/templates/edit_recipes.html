@@ -13,7 +13,7 @@
 
     {% for recipes in result %}
     <tr>
-        <td>{{ recipes["image"] }}</td>
+        <td><img src="{{ recipes["image"] }}" class="img-fluid images_table"></td>
         <td>{{ recipes["name"] }}</td>
         <td><button> <a href="/edit-recipes-{{ recipes['id'] }}"> Edit </a> </button></td>
         <td><form action="/recipes/delete/admin" method="POST">

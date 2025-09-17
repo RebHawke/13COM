@@ -290,40 +290,57 @@ def unlike():
 def edit_recipes():
     with create_connection() as connection:
         with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM recipes")
-            result = cursor.fetchall()
+            if "role" in session and session["role"] == "admin":
+                cursor.execute("SELECT * FROM recipes")
+                result = cursor.fetchall()
+            else:
+                return redirect("/")
     return render_template("edit_recipes.html", result=result)
         
 @app.route("/edit-recipes-<int:id>", methods=["GET", "POST"])
 def edit(id):
   connection = create_connection()
   with connection.cursor() as cursor:
-    if request.method == "GET":
-      sql = "SELECT * FROM recipes WHERE id = %s"
-      cursor.execute(sql, (id,))
-      recipe = cursor.fetchone()
-      print(recipe)
-      return render_template("recipe_editor.html", recipe = recipe)
+    if "role" in session and session["role"] == "admin":
+        if request.method == "GET":
+            sql = "SELECT * FROM recipes WHERE id = %s"
+            cursor.execute(sql, (id,))
+            recipe = cursor.fetchone()
+            print(recipe)
+            return render_template("recipe_editor.html", recipe = recipe)
 
-    if request.method == "POST":
-        recipe_id = request.form["recipe_id"]
-        name = request.form["name"]
-        image = request.form["image"]
-        skill = request.form["skill"]
-        featured = request.form["featured"]
+        if request.method == "POST":
+            recipe_id = request.form["recipe_id"]
+            name = request.form["name"]
+            image = request.form["image"]
+            skill = request.form["skill"]
+            featured = request.form["featured"]
+        with create_connection() as connection:
+            with connection.cursor() as cursor:
+                values = (name, image, skill, featured, recipe_id)
+                sql = """UPDATE recipes 
+                        SET name = %s, image = %s, skill = %s, featured = %s
+                        WHERE id = %s"""
 
-    with create_connection() as connection:
-        with connection.cursor() as cursor:
-            values = (name, image, skill, featured, recipe_id)
-            sql = """UPDATE recipes 
-                    SET name = %s, image = %s, skill = %s, featured = %s
-                    WHERE id = %s"""
-
-            cursor.execute(sql, values)
-            connection.commit()
+                cursor.execute(sql, values)
+                connection.commit()
+    else: 
+        return redirect("/")
 
     return redirect("/")  
 
+@app.route('/recipes/delete/admin', methods=['POST'])
+def delete_recipe_route():
+    connection = create_connection()
+    with connection.cursor() as cursor:
+        if "role" in session and session["role"] == "admin":  
+            recipe_id = request.form["recipe_id"] 
+            sql = "DELETE FROM recipes WHERE id = %s"  
+            cursor.execute(sql, (recipe_id,)) #user id is passed invisible
+            connection.commit()
+            return redirect('/edit_recipes')
+        else:
+            return "Unauthorized", 404
 
 @app.route("/recipe/create" , methods=["GET", "POST"])
 def create():

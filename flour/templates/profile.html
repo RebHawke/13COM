@@ -4,13 +4,13 @@
 
 <div class="container">
     <div class="row d-flex justify-content-center name">
-        <h1> Welcome, {{name}} </h1>
+        <h1 class="varela"> welcome, {{name}} </h1>
     </div>
     <div class="row d-flex justify-content-center mt-4">
         <div class="col-md-6">
             <div class="row">
                 <div class="col-12 top-box">
-                    <h2>Your Details:</h2>
+                    <h3 class="varela">Your Details:</h3>
                     <p> Name: {{name}} </p>
                     <p> Username: {{username}} </p>
                     <p> Email: {{email}} </p>
@@ -21,9 +21,9 @@
             <div class="row">
                 <div class="col-12 bottom-box">
                     {% if session.get("role") == "admin"%}
-                        <a class="btn btn-outline-primary log-out-button mb-1" href="/users" role="button">Users</a>
+                        <a class="btn btn-outline-danger log-out-button mb-1" href="/users" role="button">Users</a>
                     {% endif %}
-                    <a class="btn btn-outline-primary log-out-button mb-1" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update Details</a>
+                    <a class="btn btn-outline-danger log-out-button mb-1" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update Details</a>
 
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -86,20 +86,20 @@
                                 
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" form="edit">Submit</button>
+                                    <button type="submit" class="btn btn-danger" form="edit">Submit</button>
                                 </div>
                             </div>
                             </div>
                         </div>
                     </div>
 
-                    <a class="btn btn-outline-primary log-out-button mb-1" href="/logout" role="button">Log Out</a>
+                    <a class="btn btn-outline-danger log-out-button mb-1" href="/logout" role="button">Log Out</a>
                     {# suggested recipes? #}
                 </div>
             </div>
         </div>
         <div class="col-md-6 liked-box">
-            <h1 class="p-5">Your Liked Recipes</h1>
+            <h2 class="p-5 varela">Your Liked Recipes:</h2>
             <div class="container live-search-list">
                 <div class="row">
                 {% for recipes in result %}

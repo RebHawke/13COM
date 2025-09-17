@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Modak&family=Open+Sans:ital,wght@0,800;1,800&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Modak&family=Open+Sans:ital,wght@0,800;1,800&family=Varela+Round&display=swap" rel="stylesheet">
 
 
 </head>
@@ -30,16 +31,28 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/all">All recipes</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profiles">Profile</a>
                     </li>
                     {% if session.get("role") == "admin" or session.get("role") == "author" %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/recipe/create">Create Recipe</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/recipe/create">Create Recipe</a>
+                    </li>
                     {% endif %}
                 </ul>
-
+                <ul class="navbar-nav ms-auto">
+                    {% if session.get("role") %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profiles">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Log Out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profiles">Log In</a>
+                        </li>
+                    {% endif %}
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
